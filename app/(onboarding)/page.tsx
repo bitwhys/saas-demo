@@ -1,37 +1,30 @@
-'use client'
-import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+// import { Badge } from '@/components/ui/badge'
 import { SiteFooter } from '@/components/site-footer'
 import Heading from '@/app/(onboarding)/Heading'
 
 const Home = () => {
-  const [pending, setPending] = useState(false)
+  // const [pending, setPending] = useState(false)
   return (
     <section
       data-testid="onboarding-wrapper"
       className="relative flex max-h-[calc(100vh_-_var(--header-height))] w-full max-w-full
         flex-col items-center gap-y-2 px-8 pt-8"
     >
-      <div className="mx-auto mb-32 flex max-w-2xl flex-col gap-y-6 pt-4">
+      <div className="mx-auto mb-32 flex max-w-3xl flex-col gap-y-6 pt-4">
         <div className="mx-auto text-center">
           <Heading />
-          <p className="text-base font-medium text-muted-foreground">
+          <p className="text-base text-[--sand-11]">
             Unlock the (third?) Door to Your Developer Career: Effortlessly Import Job Listings from
             Your Email or Fine-Tune Your Search to Fit Your Unique Skills. Why Settle for Just One
             Way?
           </p>
         </div>
         <div className="mt-4 grid grid-cols-3 gap-4">
-          <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-stone-200/70">
+          <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-border">
             <CardHeader className="">
-              {/*<div className="mb-4">*/}
-              {/*  <Badge className="rounded-full" variant="outline">*/}
-              {/*    Recommended*/}
-              {/*  </Badge>*/}
-              {/*</div>*/}
-              <CardTitle className="text-center">
+              <CardTitle className="text-center text-lg font-semibold text-[--grey-11]">
                 {/*Centralize Your Job Search: Import from Leading Job Boards*/}
                 Import from Inbox
               </CardTitle>
@@ -46,9 +39,11 @@ const Home = () => {
               </div>
             </CardContent>
           </Card>
-          <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-stone-200/70">
+          <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-border">
             <CardHeader className="flex flex-col justify-end">
-              <CardTitle className="text-center"> Build Your Job Search Engine </CardTitle>
+              <CardTitle className="text-center text-lg leading-snug">
+                Build Your Job Board
+              </CardTitle>
               <CardDescription className="hidden">
                 Set up a custom query to sift through numerous job boards - streamline your search
                 to match your exact needs.
@@ -60,9 +55,9 @@ const Home = () => {
               </div>
             </CardContent>
           </Card>
-          <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-stone-200/70">
+          <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-border">
             <CardHeader className="flex flex-col justify-end">
-              <CardTitle className="text-center">YOLO!!!!</CardTitle>
+              <CardTitle className="text-center text-lg">YOLO!!!!</CardTitle>
               <CardDescription className="hidden">
                 Set up a custom query to sift through numerous job boards - streamline your search
                 to match your exact needs.
@@ -383,7 +378,7 @@ const EmptyInboxIllustration = ({ ...props }) => (
         width="106.365"
         height="69.6963"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix

@@ -31,9 +31,13 @@ import {
   crimsonDark,
   crimsonA,
   crimsonDarkA,
+  orange,
+  orangeDark,
+  orangeA,
+  orangeDarkA,
 } from '@radix-ui/colors'
 
-const radixColorScales = {
+export const radixColorScales = {
   slate: [slate, slateDark, slateA, slateDarkA],
   gray: [gray, grayDark, grayA, grayDarkA],
   sage: [sage, sageDark, sageA, sageDarkA],
@@ -42,6 +46,7 @@ const radixColorScales = {
   mauve: [mauve, mauveDark, mauveA, mauveDarkA],
   lime: [lime, limeDark, limeA, limeDarkA],
   crimson: [crimson, crimsonDark, crimsonA, crimsonDarkA],
+  orange: [orange, orangeDark, orangeA, orangeDarkA],
 }
 export const getRadixColorScales = (scale: keyof typeof radixColorScales) => {
   return radixColorScales[scale]

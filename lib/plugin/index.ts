@@ -1,81 +1,72 @@
 import { fontFamily } from 'tailwindcss/defaultTheme'
 import plugin from 'tailwindcss/plugin'
 import { getRadixColorScales, getRadixPaletteObject } from './tokens/colors'
-import { getRadiusVariables } from './tokens/radius'
-import { createCustomVariableFromScale, getPluginOptions } from '@/lib/utils'
-import type { BitTailwindPluginOptions, HandlerParamType, ThemeParamType } from '@/lib/utils'
-import kebabCase from 'lodash.kebabcase'
-import { radixThemeDefault } from '@/themes/theme.radix-default'
+import { getFunctionToTransformScaleToNamedHslVariables, getPluginOptions } from '../utils'
+import type { ThemeParamType } from '../utils'
 
-const { colors, radius } = radixThemeDefault
+const getNeutralPalette = getFunctionToTransformScaleToNamedHslVariables('neutral')
+const getNeutralInvertedPalette = getFunctionToTransformScaleToNamedHslVariables('neutral-inverted')
+const getNeutralAlphaPalette = getFunctionToTransformScaleToNamedHslVariables('neutral-alpha')
+const getAccentPalette = getFunctionToTransformScaleToNamedHslVariables('accent')
+const getAccentAlphaPalette = getFunctionToTransformScaleToNamedHslVariables('accent-alpha')
 
-const themeColorsKeyValuePairs = Object.entries(colors)
-const themeColorsVariables = themeColorsKeyValuePairs.reduce(
-  (acc, curr) => {
-    const [key, value] = curr
-    const _key = `--${kebabCase(key)}`
-    acc[_key] = value
-    return acc
-  },
-  {} as Record<string, string>,
-)
-const handler: HandlerParamType = options => {
-  const { scaling, radius, neutral, accent } = getPluginOptions(options)
+// @ts-ignore
+export const handler = function ({ addBase }) {
+  const { neutral, accent, radius, scaling } = getPluginOptions({})
+  const [light, dark, alpha, darkAlpha] = getRadixColorScales(neutral)
+  const [accentLight, accentDark, accentAlpha, accentDarkAlpha] = getRadixColorScales(
+    accent as 'sand',
+  )
 
-  return function ({ addBase }) {
-    const [light, dark, alpha, darkAlpha] = getRadixColorScales(neutral)
-    const [accentLight, accentDark, accentAlpha, accentDarkAlpha] = getRadixColorScales(accent)
-
-    // 1a. Add styles to base layer
-    addBase([
-      // Josh Comeau rest
-      {
-        '*,*::before,*::after': { boxSizing: 'border-box' },
-        '*': { margin: '0' },
-        'html,body': { height: '100%', fontSize: '16px' },
-        body: { lineHeight: String(1.5), WebkitFontSmoothing: 'antialiased' },
-        'img,picture,video,canvas,svg': {
-          display: 'block',
-          maxWidth: '100%',
-        },
-        'input,button,textarea,select': { font: 'inherit' },
-        'p,h1,h2,h3,h4,h5,h6': { overflowWrap: 'break-word' },
-        '#root,#__next': { isolation: 'isolate' },
+  // 1a. Add styles to base layer
+  addBase([
+    // FIXME: Josh Comeau rest
+    {
+      '*,*::before,*::after': { boxSizing: 'border-box' },
+      '*': { margin: '0' },
+      'html,body': { height: '100%', fontSize: '16px' },
+      body: { lineHeight: String(1.5), WebkitFontSmoothing: 'antialiased' },
+      'img,picture,video,canvas,svg': {
+        display: 'block',
+        maxWidth: '100%',
       },
-      // palette CSS variables
-      {
-        ':root': {
-          ...createCustomVariableFromScale('neutral', light),
-          ...createCustomVariableFromScale('neutral-inverted', dark),
-          ...createCustomVariableFromScale('neutral-alpha', alpha),
-          ...createCustomVariableFromScale('accent', accentLight),
-          ...createCustomVariableFromScale('accent-alpha', accentAlpha),
-        },
-        '.dark': {
-          ...createCustomVariableFromScale('neutral', dark),
-          ...createCustomVariableFromScale('neutral-inverted', light),
-          ...createCustomVariableFromScale('neutral-alpha', darkAlpha),
-          ...createCustomVariableFromScale('accent', accentDark),
-          ...createCustomVariableFromScale('accent-alpha', accentDarkAlpha),
-        },
+      'input,button,textarea,select': { font: 'inherit' },
+      'p,h1,h2,h3,h4,h5,h6': { overflowWrap: 'break-word' },
+      '#root,#__next': { isolation: 'isolate' },
+    },
+    // TODO: palette CSS variables
+    {
+      ':root': {
+        ...getNeutralPalette(light),
+        ...getNeutralInvertedPalette(dark),
+        ...getNeutralAlphaPalette(alpha),
+        ...getAccentPalette(accentLight),
+        ...getAccentAlphaPalette(accentAlpha),
       },
-      // TODO: semantic CSS variables
-      {
-        ':root': {
-          ...getRadiusVariables(Number(scaling), radius),
-          ...themeColorsVariables,
-        },
-        '.dark': {
-          [`--page-background`]: `var(--neutral-1)`,
-        },
+      '.dark': {
+        ...getNeutralPalette(dark),
+        ...getNeutralInvertedPalette(light),
+        ...getNeutralAlphaPalette(darkAlpha),
+        ...getAccentPalette(accentDark),
+        ...getAccentAlphaPalette(accentDarkAlpha),
       },
-      {
-        body: {
-          '@apply selection:bg-accent-9 selection:text-black': {},
-        },
+    },
+    // TODO: semantic CSS variables
+    {
+      ':root': {
+        // ...getRadiusVariables(Number(scaling), radius),
+        // ...themeColorsVariables,
       },
-    ])
-  }
+      '.dark': {
+        // [`--page-background`]: `var(--neutral-1)`,
+      },
+    },
+    {
+      body: {
+        '@apply selection:bg-accent-9 selection:text-black font-sans': {},
+      },
+    },
+  ])
 }
 
 const theme: ThemeParamType = options => {
@@ -108,8 +99,8 @@ const theme: ThemeParamType = options => {
           DEFAULT: `var(--border)`,
         },
         fontFamily: {
-          sans: ['Guminert', ...fontFamily.sans],
-          title: ['Alternox', ...fontFamily.sans],
+          sans: ['var(--font-sans)', ...fontFamily.sans],
+          heading: ['var(--font-heading)', ...fontFamily.sans],
         },
         fontSize: {
           body: [
@@ -165,4 +156,4 @@ const theme: ThemeParamType = options => {
     },
   }
 }
-export const themePlugin = plugin.withOptions<Partial<BitTailwindPluginOptions>>(handler, theme)
+export const themePlugin = plugin(handler)

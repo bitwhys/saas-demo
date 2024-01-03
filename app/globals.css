@@ -1,3 +1,7 @@
+@import '@radix-ui/colors/sand.css';
+@import '@radix-ui/colors/sand-dark.css';
+@import '@radix-ui/colors/orange.css';
+@import '@radix-ui/colors/orange-dark.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,43 +16,58 @@
     /*--illustration-accent: #e6ecf5;*/
     /*--illustration-accent-light: #e6ecf5;*/
     /*  Use theme palettes */
-    --illustration-surface: theme('colors.stone.100'); /* use to be -border */
-    --illustration-stroke: theme('colors.stone.300');
-    --illustration-heavy-stroke: theme('colors.stone.400');
+    --illustration-surface: hsl(var(--grey-2)); /* use to be -border */
+    --illustration-stroke: hsl(var(--grey-7));
+    --illustration-heavy-stroke: hsl(var(--grey-9));
     --illustration-fill: white;
-    --illustration-accent: theme('colors.stone.200/80');
-    --illustration-accent-light: theme('colors.stone.200/50');
+    --illustration-accent: hsl(var(--grey-6));
+    --illustration-accent-light: hsl(var(--grey-5));
   }
   :root {
-    --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
+    --surface: var(--grey-1);
+    /* gray-1 or white  */
+    --background: 0 0 100%;
+    /* gray-12  */
+    --foreground: var(--grey-12);
 
-    --card: 0 0% 100%;
-    --card-foreground: 20 14.3% 4.1%;
+    /* --surface  */
+    --card: var(--surface);
+    /* --foreground  */
+    --card-foreground: var(--grey-12);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 14.3% 4.1%;
+    /* --surface  */
+    --popover: var(--surface);
+    /* --foreground  */
+    --popover-foreground: var(--grey-12);
 
-    --primary: 24 9.8% 10%;
-    --primary-foreground: 60 9.1% 97.8%;
+    /* --primary-9 or gray-dark-1 (neutral themes)  */
+    --primary: var(--grey-inverted-1);
+    /* --primary-11 or gray-dark-12 (neutral themes)  */
+    --primary-foreground: var(--grey-inverted-12);
 
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
+    /* --secondary-9 or gray-dark-3 (neutral themes)  */
+    --secondary: var(--grey-3);
+    /* --secondary-11 or gray-dark-11 (neutral themes)  */
+    --secondary-foreground: var(--grey-11);
 
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
+    /* --secondary-9 or gray-dark-3 (neutral themes)  */
+    --muted: var(--grey-3);
+    /* --secondary-11 or gray-dark-10 (neutral themes)  */
+    --muted-foreground: var(--grey-10);
 
-    --accent: 60 4.8% 95.9%;
-    --accent-foreground: 24 9.8% 10%;
+    /* --primary-3 or gray-dark-3 (neutral themes)  */
+    --accent: var(--grey-3);
+    /* --primary-11 or gray-dark-11 (neutral themes)  */
+    --accent-foreground: var(--grey-11);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 60 9.1% 97.8%;
 
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 20 14.3% 4.1%;
+    --border: var(--grey-6);
+    --input: var(--grey-7);
+    --ring: var(--grey-8);
 
-    --radius: 0.5rem;
+    --radius: 1rem;
   }
 
   .dark {
@@ -87,6 +106,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-sans text-[--sand-12];
+    background: radial-gradient(50% 50% at 50% 50%, #fff 0%, rgba(255, 255, 255, 0) 100%);
   }
 }
