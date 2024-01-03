@@ -4,8 +4,9 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { SiteFooter } from '@/components/site-footer'
+import Heading from '@/app/(onboarding)/Heading'
 
-export default function Home() {
+const Home = () => {
   const [pending, setPending] = useState(false)
   return (
     <section
@@ -15,43 +16,63 @@ export default function Home() {
     >
       <div className="mx-auto mb-32 flex max-w-2xl flex-col gap-y-6 pt-4">
         <div className="mx-auto text-center">
-          <h1 className="mb-3 text-4xl font-bold">Control Your Developer Job Search</h1>
+          <Heading />
           <p className="text-base font-medium text-muted-foreground">
-            Exciting opportunities await! Import jobs directly from your email or customize your job
-            search. <strong>¿Por qué no los dos?</strong>
+            Unlock the (third?) Door to Your Developer Career: Effortlessly Import Job Listings from
+            Your Email or Fine-Tune Your Search to Fit Your Unique Skills. Why Settle for Just One
+            Way?
           </p>
         </div>
-        <div className="mt-4 grid grid-cols-2 gap-4">
+        <div className="mt-4 grid grid-cols-3 gap-4">
           <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-stone-200/70">
+            <CardHeader className="">
+              {/*<div className="mb-4">*/}
+              {/*  <Badge className="rounded-full" variant="outline">*/}
+              {/*    Recommended*/}
+              {/*  </Badge>*/}
+              {/*</div>*/}
+              <CardTitle className="text-center">
+                {/*Centralize Your Job Search: Import from Leading Job Boards*/}
+                Import from Inbox
+              </CardTitle>
+              <CardDescription className="hidden">
+                Connect your email and instantly import job postings from LinkedIn, Dice, Glassdoor,
+                and other top job boards directly to your dashboard.
+              </CardDescription>
+            </CardHeader>
             <CardContent className="flex flex-col gap-y-3">
               <div className="flex items-center justify-center pt-4">
                 <EmptyInboxIllustration className="h-[9.5rem] w-[9.5rem]" />
               </div>
             </CardContent>
-            <CardHeader className="">
-              <div className="mb-4">
-                <Badge className="rounded-full" variant="outline">
-                  Recommended
-                </Badge>
-              </div>
-              <CardTitle>Import Jobs from Email</CardTitle>
-              <CardDescription>
-                Connect your email provider to import job postings directly into your dashboard.
-              </CardDescription>
-            </CardHeader>
           </Card>
           <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-stone-200/70">
-            <CardContent className="flex flex-col">
+            <CardHeader className="flex flex-col justify-end">
+              <CardTitle className="text-center"> Build Your Job Search Engine </CardTitle>
+              <CardDescription className="hidden">
+                Set up a custom query to sift through numerous job boards - streamline your search
+                to match your exact needs.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex grow flex-col">
               <div className="flex h-full items-end justify-center pt-4">
                 <EmptySearchIllustration className="h-[9.5rem] w-[9.5rem]" />
               </div>
             </CardContent>
-            <CardHeader className="flex grow flex-col justify-end">
-              <CardTitle>Setup Custom Job Query</CardTitle>
-              <CardDescription>
-                Create a custom query to search across multiple job boards.
+          </Card>
+          <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-stone-200/70">
+            <CardHeader className="flex flex-col justify-end">
+              <CardTitle className="text-center">YOLO!!!!</CardTitle>
+              <CardDescription className="hidden">
+                Set up a custom query to sift through numerous job boards - streamline your search
+                to match your exact needs.
               </CardDescription>
             </CardHeader>
+            <CardContent className="flex grow flex-col">
+              <div className="flex h-full items-end justify-center pt-4">
+                <EmptyYoloIllustration className="h-[9.5rem] w-[9.5rem]" />
+              </div>
+            </CardContent>
           </Card>
         </div>
         <div className="mt-4 flex items-center justify-center gap-x-6">
@@ -68,6 +89,7 @@ export default function Home() {
     </section>
   )
 }
+export default Home
 
 const MailboxIllustration = ({ ...props }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" {...props}>
@@ -508,6 +530,56 @@ const EmptySearchIllustration = ({ ...props }) => (
     <path
       d="M86.5289 76.5976C86.4289 76.1976 86.4289 75.7976 86.4289 75.2976C86.4289 73.5976 87.1289 72.0976 88.9289 70.7976L90.4289 69.6976C91.3289 68.9976 91.7289 68.1976 91.7289 67.1976C91.7289 65.7976 90.7289 64.3976 88.6289 64.3976C86.4289 64.3976 85.4289 66.1976 85.4289 67.8976C85.4289 68.2976 85.4289 68.5976 85.5289 68.8976L81.5289 68.7976C81.4289 68.3976 81.3289 67.8976 81.3289 67.3976C81.3289 63.9976 83.8289 60.7976 88.5289 60.7976C93.3289 60.7976 95.9289 63.8976 95.9289 66.9976C95.9289 69.4976 94.6289 71.1976 92.8289 72.4976L91.5289 73.3976C90.4289 74.1976 89.8289 75.1976 89.8289 76.3976V76.5976H86.5289ZM88.2289 78.5976C89.6289 78.5976 90.7289 79.6976 90.7289 81.0976C90.7289 82.4976 89.6289 83.5976 88.2289 83.5976C86.8289 83.5976 85.7289 82.4976 85.7289 81.0976C85.8289 79.7976 86.8289 78.5976 88.2289 78.5976Z"
       fill="var(--illustration-accent-light)"
+    />
+  </svg>
+)
+
+const EmptyYoloIllustration = ({ ...props }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 122" fill="none" {...props}>
+    <path
+      d="M121.888 69.9023C121.888 88.0434 112.423 104.016 98.028 112.889C97.2393 113.283 96.4505 113.875 95.8589 114.269C88.563 118.41 80.084 120.776 71.2106 120.776C62.9288 120.776 55.0414 118.804 48.1398 115.255C31.5762 106.776 20.3365 89.6209 20.3365 69.9023C20.3365 41.9018 43.013 19.2253 71.0135 19.2253C80.2812 19.2253 88.7602 21.5916 96.2533 25.9297C101.38 28.6903 105.718 32.4368 109.465 36.9721C110.254 37.7609 111.042 38.7468 111.634 39.7327C118.141 48.0146 121.888 58.4654 121.888 69.9023Z"
+      fill="var(--illustration-surface)"
+      stroke="var(--illustration-stroke)"
+      strokeWidth="2"
+      strokeMiterlimit="10"
+    />
+    <path
+      d="M58.3935 18.8308V41.399C59.1713 37.7435 62.1664 34.916 65.8866 34.4087C66.0639 34.4087 66.2412 34.3688 66.4363 34.325C66.6754 34.2712 66.9413 34.2115 67.2669 34.2115C69.8304 34.2115 71.9994 35.1974 73.5769 36.7749C75.1544 38.5496 76.1403 40.7186 76.1403 43.2821V47.3248C76.9181 43.7072 79.9132 41.0006 83.6334 40.3242C83.6751 40.3283 83.7166 40.3329 83.7581 40.3377L83.8306 40.3243C84.0078 40.3243 84.1851 40.2844 84.3803 40.2406C84.6193 40.1868 84.8852 40.1271 85.2109 40.1271C87.7743 40.1271 89.9433 41.113 91.5208 42.6905C92.9011 44.4652 94.0843 46.6342 94.0843 49.1977V55.3104L94.0843 31.8451C94.0843 29.4789 95.0703 27.3098 96.4506 25.7323C97.8309 24.1548 99.8027 23.1689 101.972 22.9717H103.155C107.887 22.9717 111.831 26.9154 111.831 31.8451V71.0852C111.831 86.395 105.429 92.6498 101.345 96.6396C99.4321 98.508 98.0281 99.8797 98.0281 101.452V112.889C97.4255 113.19 96.8229 113.606 96.3083 113.962L96.3061 113.964C96.1479 114.073 95.998 114.176 95.859 114.269C88.5631 118.41 80.0841 120.776 71.2107 120.776C62.9289 120.776 55.0414 118.804 48.1399 115.255V103.28C47.7174 102.905 47.3212 102.492 46.9568 102.043L40.4496 93.5118V93.7618L20.3366 67.1416C19.4985 66.057 18.9193 64.8492 18.5927 63.5952C18.0826 61.6364 18.1889 59.5648 18.8882 57.6741C19.5319 55.9335 20.6781 54.3463 22.3085 53.1412L22.5057 52.944C22.5058 52.944 22.5055 52.944 22.5057 52.944C24.2802 51.7611 26.2523 51.1695 28.2241 51.1695C31.1819 51.1695 34.1397 52.5498 36.1115 55.1132L40.2524 60.5717V18.8309C40.2524 14.2956 43.6046 10.549 47.9427 9.95747C47.9605 9.95925 47.9783 9.96109 47.996 9.963C48.0155 9.9651 48.035 9.96727 48.0545 9.96952C48.0829 9.96536 48.1114 9.96134 48.1399 9.95746H49.5202C52.0836 9.95746 54.2526 10.9434 55.8301 12.5209C57.4076 14.0984 58.3935 16.2674 58.3935 18.8308Z"
+      fill="var(--illustration-fill)"
+    />
+    <path
+      d="M22.5057 52.944L22.3085 53.1412C20.6781 54.3463 19.5319 55.9335 18.8882 57.6741C18.1889 59.5648 18.0826 61.6364 18.5927 63.5952C18.9193 64.8492 19.4985 66.057 20.3366 67.1416L40.4496 93.7618V93.5118L46.9568 102.043C47.3212 102.492 47.7174 102.905 48.1399 103.28V115.255C55.0414 118.804 62.9289 120.776 71.2107 120.776C80.0841 120.776 88.5631 118.41 95.859 114.269C95.998 114.176 96.1479 114.073 96.3061 113.964L96.3083 113.962C96.8229 113.606 97.4255 113.19 98.0281 112.889V101.452C98.0281 99.8797 99.4321 98.508 101.345 96.6396C105.429 92.6498 111.831 86.395 111.831 71.0852V31.8451C111.831 26.9154 107.887 22.9717 103.155 22.9717H101.972C99.8027 23.1689 97.8309 24.1548 96.4506 25.7323C95.0703 27.3098 94.0843 29.4789 94.0843 31.8451L94.0843 55.3104V49.1977C94.0843 46.6342 92.9011 44.4652 91.5208 42.6905C89.9433 41.113 87.7743 40.1271 85.2109 40.1271C84.8852 40.1271 84.6193 40.1868 84.3803 40.2406C84.1851 40.2844 84.0078 40.3243 83.8306 40.3243L83.7581 40.3377C83.7166 40.3329 83.6751 40.3283 83.6334 40.3242C79.9132 41.0006 76.9181 43.7072 76.1403 47.3248V43.2821C76.1403 40.7186 75.1544 38.5496 73.5769 36.7749C71.9994 35.1974 69.8304 34.2115 67.2669 34.2115C66.9413 34.2115 66.6754 34.2712 66.4363 34.325C66.2412 34.3688 66.0639 34.4087 65.8866 34.4087C62.1664 34.916 59.1713 37.7435 58.3935 41.399V18.8308C58.3935 16.2674 57.4076 14.0984 55.8301 12.5209C54.2526 10.9434 52.0836 9.95746 49.5202 9.95746H48.1399C48.1114 9.96134 48.0829 9.96536 48.0545 9.96952C48.035 9.96727 48.0155 9.9651 47.996 9.963C47.9783 9.96109 47.9605 9.95925 47.9427 9.95747C43.6046 10.549 40.2524 14.2956 40.2524 18.8309V60.5717L36.1115 55.1132C34.1397 52.5498 31.1819 51.1695 28.2241 51.1695C26.2523 51.1695 24.2802 51.7611 22.5057 52.944ZM22.5057 52.944C22.5055 52.944 22.5058 52.944 22.5057 52.944Z"
+      stroke="var(--illustration-stroke)"
+      strokeWidth="2"
+      strokeMiterlimit="10"
+    />
+    <path
+      d="M76.5905 14.6332C79.2042 14.6332 81.323 12.5144 81.323 9.90069C81.323 7.28701 79.2042 5.16821 76.5905 5.16821C73.9768 5.16821 71.858 7.28701 71.858 9.90069C71.858 12.5144 73.9768 14.6332 76.5905 14.6332Z"
+      fill="var(--illustration-surface)"
+    />
+    <path
+      d="M135.099 61.4232C137.713 61.4232 139.832 59.3044 139.832 56.6907C139.832 54.077 137.713 51.9582 135.099 51.9582C132.485 51.9582 130.367 54.077 130.367 56.6907C130.367 59.3044 132.485 61.4232 135.099 61.4232Z"
+      fill="var(--illustration-surface)"
+    />
+    <path
+      d="M126.203 5.72897H121.242V0.767822H116.989V5.72897H112.028V10.1231H116.989V15.0843H121.242V10.1231H126.203V5.72897Z"
+      fill="var(--illustration-heavy-stroke)"
+    />
+    <path
+      d="M13.606 29.3284H8.78359V24.506H4.65014V29.3284H0V33.4619H4.65014V38.112H8.78359V33.4619H13.606V29.3284Z"
+      fill="var(--illustration-heavy-stroke)"
+    />
+    <path
+      d="M58.4257 39.6151V50.9063"
+      stroke="var(--illustration-stroke)"
+      strokeWidth="2"
+      strokeMiterlimit="10"
+    />
+    <path
+      d="M76.1266 45.7066V56.9979"
+      stroke="var(--illustration-stroke)"
+      strokeWidth="2"
+      strokeMiterlimit="10"
     />
   </svg>
 )
