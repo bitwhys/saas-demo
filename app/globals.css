@@ -16,15 +16,16 @@
     /*--illustration-accent: #e6ecf5;*/
     /*--illustration-accent-light: #e6ecf5;*/
     /*  Use theme palettes */
-    --illustration-surface: hsl(var(--grey-2)); /* use to be -border */
-    --illustration-stroke: hsl(var(--grey-7));
-    --illustration-heavy-stroke: hsl(var(--grey-9));
+    --illustration-surface: hsl(var(--accent-3)); /* use to be -border */
+    --illustration-stroke: hsl(var(--accent-8));
+    --illustration-heavy-stroke: hsl(var(--accent-10));
     --illustration-fill: white;
-    --illustration-accent: hsl(var(--grey-6));
-    --illustration-accent-light: hsl(var(--grey-5));
+    --illustration-accent: hsl(var(--accent-7));
+    --illustration-accent-light: hsl(var(--accent-6));
+    --illustration-bubbles: hsl(var(--accent-4));
   }
   :root {
-    --surface: var(--grey-1);
+    --surface: var(--grey-2);
     /* gray-1 or white  */
     --background: 0 0 100%;
     /* gray-12  */

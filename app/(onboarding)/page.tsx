@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 // import { Badge } from '@/components/ui/badge'
 import { SiteFooter } from '@/components/site-footer'
 import Heading from '@/app/(onboarding)/Heading'
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 const Home = () => {
   // const [pending, setPending] = useState(false)
@@ -24,7 +25,7 @@ const Home = () => {
         <div className="mt-4 grid grid-cols-3 gap-4">
           <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-border">
             <CardHeader className="">
-              <CardTitle className="text-center text-lg font-semibold text-[--grey-11]">
+              <CardTitle className="text-center text-lg font-extrabold text-[hsl(var(--grey-11))]">
                 {/*Centralize Your Job Search: Import from Leading Job Boards*/}
                 Import from Inbox
               </CardTitle>
@@ -41,7 +42,7 @@ const Home = () => {
           </Card>
           <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-border">
             <CardHeader className="flex flex-col justify-end">
-              <CardTitle className="text-center text-lg leading-snug">
+              <CardTitle className="text-center text-lg font-extrabold text-[hsl(var(--grey-11))]">
                 Build Your Job Board
               </CardTitle>
               <CardDescription className="hidden">
@@ -57,7 +58,9 @@ const Home = () => {
           </Card>
           <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-border">
             <CardHeader className="flex flex-col justify-end">
-              <CardTitle className="text-center text-lg">YOLO!!!!</CardTitle>
+              <CardTitle className="text-center text-lg font-extrabold text-[hsl(var(--grey-11))]">
+                YOLO!
+              </CardTitle>
               <CardDescription className="hidden">
                 Set up a custom query to sift through numerous job boards - streamline your search
                 to match your exact needs.
@@ -356,19 +359,19 @@ const EmptyInboxIllustration = ({ ...props }) => (
     />
     <path
       d="M129.923 32.7499C132.188 32.7499 134.023 30.9143 134.023 28.6499C134.023 26.3856 132.188 24.5499 129.923 24.5499C127.659 24.5499 125.823 26.3856 125.823 28.6499C125.823 30.9143 127.659 32.7499 129.923 32.7499Z"
-      fill="var(--illustration-surface)"
+      fill="var(--illustration-bubbles)"
     />
     <path
       d="M125.823 19.45C127.37 19.45 128.623 18.1964 128.623 16.65C128.623 15.1036 127.37 13.85 125.823 13.85C124.277 13.85 123.023 15.1036 123.023 16.65C123.023 18.1964 124.277 19.45 125.823 19.45Z"
-      fill="var(--illustration-surface)"
+      fill="var(--illustration-bubbles)"
     />
     <path
       d="M12.4232 28.6499C13.9696 28.6499 15.2232 27.3963 15.2232 25.8499C15.2232 24.3035 13.9696 23.0499 12.4232 23.0499C10.8768 23.0499 9.62323 24.3035 9.62323 25.8499C9.62323 27.3963 10.8768 28.6499 12.4232 28.6499Z"
-      fill="var(--illustration-surface)"
+      fill="var(--illustration-bubbles)"
     />
     <path
       d="M6.12322 90.25C8.9951 90.25 11.3232 87.9219 11.3232 85.05C11.3232 82.1781 8.9951 79.85 6.12322 79.85C3.25134 79.85 0.923218 82.1781 0.923218 85.05C0.923218 87.9219 3.25134 90.25 6.12322 90.25Z"
-      fill="var(--illustration-surface)"
+      fill="var(--illustration-bubbles)"
     />
     <defs>
       <filter
@@ -411,19 +414,19 @@ const EmptySearchIllustration = ({ ...props }) => (
     />
     <path
       d="M118.629 22.3978C120.893 22.3978 122.729 20.5621 122.729 18.2978C122.729 16.0334 120.893 14.1978 118.629 14.1978C116.364 14.1978 114.529 16.0334 114.529 18.2978C114.529 20.5621 116.364 22.3978 118.629 22.3978Z"
-      fill="var(--illustration-surface)"
+      fill="var(--illustration-bubbles)"
     />
     <path
       d="M124.629 6.39761C126.175 6.39761 127.429 5.144 127.429 3.59761C127.429 2.05121 126.175 0.797607 124.629 0.797607C123.082 0.797607 121.829 2.05121 121.829 3.59761C121.829 5.144 123.082 6.39761 124.629 6.39761Z"
-      fill="var(--illustration-surface)"
+      fill="var(--illustration-bubbles)"
     />
     <path
       d="M23.2288 22.2978C24.7752 22.2978 26.0288 21.0442 26.0288 19.4978C26.0288 17.9514 24.7752 16.6978 23.2288 16.6978C21.6824 16.6978 20.4288 17.9514 20.4288 19.4978C20.4288 21.0442 21.6824 22.2978 23.2288 22.2978Z"
-      fill="var(--illustration-surface)"
+      fill="var(--illustration-bubbles)"
     />
     <path
       d="M6.12883 76.2975C9.00071 76.2975 11.3288 73.9693 11.3288 71.0975C11.3288 68.2256 9.00071 65.8975 6.12883 65.8975C3.25695 65.8975 0.928833 68.2256 0.928833 71.0975C0.928833 73.9693 3.25695 76.2975 6.12883 76.2975Z"
-      fill="var(--illustration-surface)"
+      fill="var(--illustration-bubbles)"
     />
     <path
       d="M85.9288 28.6978L101.229 83.6978C101.729 85.5978 100.629 87.4977 98.7288 87.9977L44.8288 102.298C42.9288 102.798 41.0288 101.698 40.5288 99.7978L21.7288 28.7978C21.2288 26.8978 22.3288 24.9978 24.2288 24.4978L63.2288 14.1978L85.9288 28.6978Z"
@@ -550,11 +553,11 @@ const EmptyYoloIllustration = ({ ...props }) => (
     />
     <path
       d="M76.5905 14.6332C79.2042 14.6332 81.323 12.5144 81.323 9.90069C81.323 7.28701 79.2042 5.16821 76.5905 5.16821C73.9768 5.16821 71.858 7.28701 71.858 9.90069C71.858 12.5144 73.9768 14.6332 76.5905 14.6332Z"
-      fill="var(--illustration-surface)"
+      fill="var(--illustration-bubbles)"
     />
     <path
       d="M135.099 61.4232C137.713 61.4232 139.832 59.3044 139.832 56.6907C139.832 54.077 137.713 51.9582 135.099 51.9582C132.485 51.9582 130.367 54.077 130.367 56.6907C130.367 59.3044 132.485 61.4232 135.099 61.4232Z"
-      fill="var(--illustration-surface)"
+      fill="var(--illustration-bubbles)"
     />
     <path
       d="M126.203 5.72897H121.242V0.767822H116.989V5.72897H112.028V10.1231H116.989V15.0843H121.242V10.1231H126.203V5.72897Z"
