@@ -1,17 +1,12 @@
+'use client'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import Image from 'next/image'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { SiteFooter } from '@/components/site-footer'
 
 export default function Home() {
+  const [pending, setPending] = useState(false)
   return (
     <section
       data-testid="onboarding-wrapper"
@@ -27,19 +22,14 @@ export default function Home() {
           </p>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-4">
-          <Card
-            className="flex w-full flex-col rounded-[.8rem] border-0 shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514]"
-            style={{
-              borderRadius: '0.8rem',
-            }}
-          >
+          <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-stone-200/70">
             <CardContent className="flex flex-col gap-y-3">
               <div className="flex items-center justify-center pt-4">
                 <EmptyInboxIllustration className="h-[9.5rem] w-[9.5rem]" />
               </div>
             </CardContent>
-            <CardHeader className="space-y-4">
-              <div>
+            <CardHeader className="">
+              <div className="mb-4">
                 <Badge className="rounded-full" variant="outline">
                   Recommended
                 </Badge>
@@ -50,12 +40,7 @@ export default function Home() {
               </CardDescription>
             </CardHeader>
           </Card>
-          <Card
-            className="flex w-full flex-col rounded-[.8rem] border-0 shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514]"
-            style={{
-              borderRadius: '0.8rem',
-            }}
-          >
+          <Card className="flex w-full flex-col rounded-[.8rem] border-transparent shadow-[0_2px_12px_#0103140a,0_0_0_.5px_#01031426,0_1px_2px_#17182514] duration-200 hover:border-stone-200/70">
             <CardContent className="flex flex-col">
               <div className="flex h-full items-end justify-center pt-4">
                 <EmptySearchIllustration className="h-[9.5rem] w-[9.5rem]" />
@@ -525,4 +510,13 @@ const EmptySearchIllustration = ({ ...props }) => (
       fill="var(--illustration-accent-light)"
     />
   </svg>
+)
+
+const Pagination = () => (
+  <div className="flex items-center gap-x-2">
+    <span className="block h-1.5 w-1.5 rounded-full bg-black"></span>
+    <span className="block h-1.5 w-1.5 rounded-full bg-stone-200"></span>
+    <span className="block h-1.5 w-1.5 rounded-full bg-stone-200"></span>
+    <span className="block h-1.5 w-1.5 rounded-full bg-stone-200"></span>
+  </div>
 )
